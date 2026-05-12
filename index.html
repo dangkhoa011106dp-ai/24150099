@@ -1,0 +1,2358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đoàn Lê Đăng Khoa — Graphic Designer Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+      --bg: #050816;
+      --bg-secondary: #0b1220;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --border: rgba(89, 255, 225, 0.14);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.72);
+      --accent: #59ffe1;
+      --accent-soft: rgba(89, 255, 225, 0.18);
+      --gradient: linear-gradient(135deg, #59ffe1, #2d9fff);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --radius: 32px;
+      --max-width: 1240px;
+      --transition: 0.32s ease;
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 2.5rem;
+      --space-xl: 4rem;
+      --space-xxl: 6rem;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Inter', 'Poppins', system-ui, sans-serif;
+      color: var(--text-primary);
+      background: radial-gradient(circle at top left, rgba(89, 255, 225, 0.14), transparent 22%),
+                  radial-gradient(circle at bottom right, rgba(41, 116, 255, 0.14), transparent 22%),
+                  linear-gradient(180deg, #050816 0%, #081029 58%, #050816 100%);
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      border: none;
+      cursor: pointer;
+    }
+
+    .page-wrap {
+      position: relative;
+      overflow: hidden;
+      padding-top: 100px;
+      background: transparent;
+    }
+
+    .glow-spot {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glow-spot:nth-child(1) {
+      width: 360px;
+      height: 360px;
+      top: -120px;
+      left: -120px;
+      background: rgba(100, 255, 218, 0.16);
+    }
+
+    .glow-spot:nth-child(2) {
+      width: 260px;
+      height: 260px;
+      bottom: -90px;
+      right: -90px;
+      background: rgba(59, 130, 246, 0.14);
+    }
+
+    .glow-spot:nth-child(3) {
+      width: 200px;
+      height: 200px;
+      top: 30%;
+      right: 4%;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    header {
+      position: fixed;
+      inset: 0 auto auto 0;
+      width: 100%;
+      z-index: 20;
+      padding: 1rem 2rem;
+      background: rgba(15, 17, 21, 0.75);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform var(--transition), background var(--transition), border-color var(--transition);
+    }
+
+    .header-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .brand::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 20px rgba(100, 255, 218, 0.45);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    nav a {
+      position: relative;
+      transition: color var(--transition);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width var(--transition);
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--accent);
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    .hero {
+      position: relative;
+      padding: var(--space-xxl) 2rem 8rem;
+      display: grid;
+      align-items: center;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      gap: 3rem;
+      z-index: 1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.55fr) minmax(320px, 0.45fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-copy {
+      max-width: 640px;
+      gap: 1.5rem;
+      display: grid;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .hero-copy h1 {
+      margin: 0;
+      font-size: clamp(3.4rem, 6vw, 5.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      max-width: 12ch;
+      color: var(--text-primary);
+    }
+
+    .hero-copy p {
+      margin: 0;
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--text-secondary);
+      max-width: 680px;
+    }
+
+    .tagline {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--accent);
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 1.75rem;
+      border-radius: 20px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
+    }
+
+    .button.primary {
+      background: var(--gradient);
+      color: #07101a;
+      box-shadow: 0 20px 40px rgba(100, 255, 218, 0.2);
+    }
+
+    .button.secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 32px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(18px);
+      min-height: 540px;
+      display: grid;
+      align-items: flex-end;
+      padding: 2rem;
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 38%, rgba(15, 17, 21, 0.55) 100%);
+      pointer-events: none;
+    }
+
+    .hero-card::after {
+      content: '';
+      position: absolute;
+      top: 24%;
+      left: -18%;
+      width: 260px;
+      height: 260px;
+      background: rgba(100, 255, 218, 0.14);
+      filter: blur(90px);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 420px;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .hero-card:hover .hero-image img {
+      transform: scale(1.04);
+    }
+
+    .hero-card-info {
+      display: grid;
+      gap: 0.85rem;
+      padding: 1rem 1.25rem;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-card-info h2 {
+      margin: 0;
+      font-size: 1.1rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .hero-card-info p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.97rem;
+      line-height: 1.8;
+    }
+
+    .hero-card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .badge {
+      padding: 0.8rem 1rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .section {
+      position: relative;
+      padding: 6rem 2rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      z-index: 1;
+    }
+
+    .section-heading {
+      display: grid;
+      gap: 0.85rem;
+      margin-bottom: 2.5rem;
+      max-width: 660px;
+    }
+
+    .section-heading span {
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(2.8rem, 4vw, 4.2rem);
+      color: var(--text-primary);
+      line-height: 1.05;
+      letter-spacing: -0.08em;
+      max-width: 14ch;
+      text-wrap: balance;
+      text-shadow: 0 0 18px rgba(255, 255, 255, 0.07);
+      word-break: break-word;
+      font-weight: 900;
+    }
+
+    .skills-title {
+      max-width: 520px;
+      font-size: clamp(3rem, 5vw, 5.2rem);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      text-align: left;
+      padding-right: 0.25rem;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.95;
+      max-width: 720px;
+      font-size: 1rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+      border-radius: 32px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      min-height: 520px;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15, 17, 21, 0.12), rgba(15, 17, 21, 0.9));
+    }
+
+    .about-details {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .about-details h3 {
+      margin: 0;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      color: var(--text-primary);
+      line-height: 1.05;
+    }
+
+    .about-details p {
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      font-size: 1rem;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    .pill {
+      padding: 0.8rem 1rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: transform var(--transition), background var(--transition), border-color var(--transition);
+    }
+
+    .pill:hover {
+      transform: translateY(-2px);
+      background: rgba(100, 255, 218, 0.1);
+      border-color: rgba(100, 255, 218, 0.18);
+    }
+
+    #skills {
+      background: linear-gradient(180deg, #061329 0%, #0A1931 32%, #102542 100%);
+    }
+
+    .skills-panel {
+      display: grid;
+      grid-template-columns: 1.45fr 0.95fr;
+      gap: 2.5rem;
+      align-items: start;
+      position: relative;
+      padding: 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .skills-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 15% 18%, rgba(89, 251, 234, 0.16), transparent 18%),
+                  radial-gradient(circle at 82% 28%, rgba(89, 251, 234, 0.1), transparent 16%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .skills-panel > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .skills-content {
+      display: grid;
+      gap: 2rem;
+      padding: 2rem 2.2rem;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(89, 251, 234, 0.14);
+      backdrop-filter: blur(24px);
+      box-shadow: 0 45px 90px rgba(4, 11, 34, 0.32);
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(220px, 1fr));
+      gap: 1.25rem;
+      align-items: stretch;
+      justify-items: stretch;
+      width: 100%;
+    }
+
+    .stat-card {
+      display: grid;
+      align-items: center;
+      justify-items: start;
+      gap: 0.8rem;
+      min-height: 190px;
+      padding: 2rem 1.8rem;
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(11, 20, 50, 0.95), rgba(6, 19, 41, 0.96));
+      border: 1px solid rgba(89, 251, 234, 0.22);
+      box-shadow: 0 30px 90px rgba(5, 13, 38, 0.4), inset 0 0 1px rgba(89, 251, 234, 0.06);
+      overflow: hidden;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(89, 251, 234, 0.32);
+      box-shadow: 0 38px 110px rgba(5, 13, 38, 0.5), 0 0 24px rgba(89, 251, 234, 0.1);
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: -28px;
+      right: -28px;
+      width: 160px;
+      height: 160px;
+      background: rgba(89, 251, 234, 0.12);
+      border-radius: 50%;
+      filter: blur(56px);
+      pointer-events: none;
+    }
+
+    .stat-value {
+      margin: 0;
+      font-size: clamp(2.6rem, 3vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .stat-label {
+      margin: 0;
+      color: rgba(218, 236, 255, 0.78);
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      font-weight: 700;
+    }
+
+    .skills-circle-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    .skill-ring-card {
+      position: relative;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      gap: 1rem;
+      width: 100%;
+      max-width: 380px;
+      min-height: 390px;
+      padding: 2.4rem 2rem;
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(7, 18, 41, 0.95), rgba(10, 25, 49, 0.98));
+      border: 1px solid rgba(89, 251, 234, 0.18);
+      backdrop-filter: blur(28px);
+      box-shadow: 0 28px 90px rgba(4, 12, 35, 0.35), 0 0 18px rgba(89, 251, 234, 0.05);
+      overflow: hidden;
+      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    }
+
+    .skill-ring-card:hover {
+      transform: translateY(-10px) scale(1.01);
+      border-color: rgba(89, 251, 234, 0.35);
+      box-shadow: 0 35px 110px rgba(4, 12, 35, 0.38), 0 0 28px rgba(89, 251, 234, 0.2);
+      background: linear-gradient(180deg, rgba(8, 20, 54, 0.96), rgba(10, 25, 54, 0.98));
+    }
+
+    .premium-skill-card {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 100%;
+      max-width: 380px;
+      min-height: 420px;
+      padding: 3rem 2rem 2.4rem;
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 32px 90px rgba(0, 0, 0, 0.26), inset 0 0 1px rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(24px);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    }
+
+    .premium-skill-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(89, 251, 234, 0.32);
+      box-shadow: 0 42px 120px rgba(0, 0, 0, 0.32), 0 0 28px rgba(89, 251, 234, 0.14);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .premium-skill-card::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(89, 251, 234, 0.24), transparent 55%);
+      filter: blur(28px);
+      z-index: 0;
+    }
+
+    .skill-glow {
+      position: absolute;
+      top: 2.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 118px;
+      height: 118px;
+      border-radius: 50%;
+      border: 2px solid rgba(89, 251, 234, 0.4);
+      background: rgba(89, 251, 234, 0.08);
+      box-shadow: 0 0 32px rgba(89, 251, 234, 0.4), inset 0 0 18px rgba(255, 255, 255, 0.08);
+      z-index: 1;
+    }
+
+    .skill-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 2.2rem;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .skill-score {
+      margin: 0;
+      font-size: clamp(4.6rem, 10vw, 6.2rem);
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.08em;
+      line-height: 0.92;
+      text-shadow: 0 0 32px rgba(255, 255, 255, 0.18), 0 16px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .skill-label {
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.36em;
+      color: rgba(255, 255, 255, 0.84);
+      opacity: 0.98;
+    }
+
+    .skill-ring-card::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 36px;
+      background: linear-gradient(135deg, rgba(89, 251, 234, 0.14), rgba(33, 101, 196, 0.12));
+      filter: blur(22px);
+      opacity: 0.85;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .skill-ring-card::after {
+      content: '';
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(89, 251, 234, 0.14), transparent 55%);
+      filter: blur(40px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .skill-ring-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .chart-ring {
+      width: 180px;
+      height: 180px;
+      position: relative;
+    }
+
+    .chart-ring::after {
+      content: '';
+      position: absolute;
+      inset: 16px;
+      border-radius: 50%;
+      background: rgba(89, 251, 234, 0.05);
+      filter: blur(10px);
+      z-index: 0;
+    }
+
+    .chart-ring svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+      position: relative;
+      z-index: 1;
+    }
+
+    .chart-ring circle {
+      fill: none;
+      stroke-width: 14;
+      stroke-linecap: round;
+    }
+
+    .ring-bg {
+      stroke: rgba(255, 255, 255, 0.08);
+    }
+
+    .ring-fill {
+      stroke: #59FBEA;
+      stroke-dasharray: 440;
+      stroke-dashoffset: 440;
+      transition: stroke-dashoffset 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.2s, stroke 0.4s ease;
+      filter: drop-shadow(0 0 28px rgba(89, 251, 234, 0.65));
+    }
+
+    .skill-ring-card.visible .ring-fill {
+      stroke-dashoffset: calc(440 - (440 * var(--percentage) / 100));
+      animation: ringGlow 1.4s ease forwards;
+    }
+
+    .chart-value {
+      margin: 0;
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      z-index: 2;
+    }
+
+    .skill-card-title {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: 1.05rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: #ffffff;
+      text-align: center;
+      margin-top: 1rem;
+      line-height: 1.2;
+      min-height: 3.1rem;
+    }
+
+    .skill-description {
+      margin: 0;
+      margin-top: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 1.85;
+      max-width: 300px;
+      color: rgba(220, 231, 250, 0.78);
+      text-align: center;
+      margin-inline: auto;
+      font-size: 0.98rem;
+    }
+
+   @keyframes ringGlow {
+      from { filter: drop-shadow(0 0 0 rgba(89, 251, 234, 0)); }
+      to { filter: drop-shadow(0 0 30px rgba(89, 251, 234, 0.75)); }
+    }
+
+    /* Các media queries và style còn lại */
+    @media (max-width: 1080px) {
+      .radial-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .radial-grid {
+        grid-template-columns: 1fr;
+      }
+      .skill-ring-card {
+        padding: 2rem;
+        min-height: auto;
+      }
+    }
+
+    .tech-top h4,
+    .expertise-card h4,
+    .timeline-card h4 {
+      margin: 0;
+      color: var(--text-primary);
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+  </style>
+</head>
+
+    .skill-card-title {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: 1.05rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: #ffffff;
+      text-align: center;
+      margin-top: 1rem;
+      line-height: 1.2;
+      min-height: 3.1rem;
+    }
+
+    .skill-description {
+      margin: 0;
+      margin-top: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 1.85;
+      max-width: 300px;
+      color: rgba(220, 231, 250, 0.78);
+      text-align: center;
+      margin-inline: auto;
+      font-size: 0.98rem;
+    }
+
+    @keyframes ringGlow {
+      from { filter: drop-shadow(0 0 0 rgba(89, 251, 234, 0)); }
+      to { filter: drop-shadow(0 0 30px rgba(89, 251, 234, 0.75)); }
+    }
+
+    @media (max-width: 1080px) {
+      .radial-grid {
+        grid-template-columns: repeat(2, minmax(280px, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .radial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skill-ring-card {
+        max-width: 100%;
+        min-height: auto;
+        padding: 2rem;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .radial-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .radial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skill-ring-card {
+        padding: 2rem;
+        min-height: auto;
+      }
+    }
+
+    .timeline-panel {
+      position: relative;
+      display: grid;
+      gap: 1.5rem;
+      min-height: 100%;
+      padding: 2rem 2rem 2rem 3rem;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(89, 255, 225, 0.14);
+      backdrop-filter: blur(24px);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
+      overflow: hidden;
+    }
+
+    .timeline-panel::before {
+      content: '';
+      position: absolute;
+      top: 1rem;
+      bottom: 1rem;
+      left: 2.4rem;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(89, 255, 225, 1), rgba(89, 255, 225, 0.15));
+      opacity: 0.9;
+    }
+
+    .timeline-badge {
+      position: absolute;
+      top: 1rem;
+      left: 0.6rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(89, 255, 225, 0.18);
+      border: 1px solid rgba(89, 255, 225, 0.35);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-weight: 700;
+      box-shadow: 0 0 22px rgba(89, 255, 225, 0.22);
+    }
+
+    .timeline-list {
+      display: grid;
+      gap: 1.4rem;
+      position: relative;
+      margin-top: 2.5rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 1.55rem 1.5rem 1.5rem 2.3rem;
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(89, 255, 225, 0.12);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .timeline-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(89, 255, 225, 0.22);
+      box-shadow: 0 20px 48px rgba(89, 255, 225, 0.12);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 1.45rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid rgba(5, 8, 22, 1);
+      box-shadow: 0 0 18px rgba(89, 255, 225, 0.3);
+    }
+
+    .timeline-date {
+      margin: 0 0 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .timeline-title {
+      margin: 0;
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .timeline-copy {
+      margin: 0.75rem 0 0;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      font-size: 0.95rem;
+    }
+
+    .timeline-highlight {
+      position: absolute;
+      top: -18px;
+      right: -18px;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: rgba(89, 255, 225, 0.08);
+      filter: blur(40px);
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .experience-card {
+      position: relative;
+      padding: 1.75rem;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(89, 255, 225, 0.14);
+      backdrop-filter: blur(24px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .experience-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(89, 255, 225, 0.24);
+      box-shadow: 0 24px 60px rgba(89, 255, 225, 0.18);
+    }
+
+    .experience-card::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 72px;
+      height: 72px;
+      background: rgba(100, 255, 218, 0.08);
+      border-radius: 50%;
+      filter: blur(24px);
+    }
+
+    .experience-meta {
+      display: grid;
+      gap: 0.3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .experience-year {
+      margin: 0;
+      color: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .experience-role {
+      margin: 0;
+      color: var(--text-primary);
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .experience-note {
+      margin: 0.8rem 0 0;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      font-size: 0.95rem;
+    }
+
+    .experience-flag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(100, 255, 218, 0.1);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      border: 1px solid rgba(100, 255, 218, 0.16);
+      position: relative;
+      z-index: 1;
+    }
+
+    .skills-panel::after {
+      content: '';
+      position: absolute;
+      top: 24%;
+      right: -40px;
+      width: 220px;
+      height: 220px;
+      background: rgba(100, 255, 218, 0.08);
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .skills-panel > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .premium-skill-card {
+      position: relative;
+      display: grid;
+      gap: 1.5rem;
+      padding: 2.5rem 2rem;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22), inset 0 0 1px rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(20px);
+      overflow: hidden;
+      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    }
+
+    .premium-skill-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(89, 251, 234, 0.28);
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.28), 0 0 24px rgba(89, 251, 234, 0.12);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .premium-skill-card::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(89, 251, 234, 0.18), transparent 50%);
+      border-radius: 50%;
+      filter: blur(32px);
+      z-index: 0;
+    }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .skill-name {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.02em;
+    }
+
+    .skill-percentage {
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+
+    .progress-bar {
+      position: relative;
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), rgba(89, 251, 234, 0.8));
+      border-radius: 4px;
+      transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 0 12px rgba(89, 251, 234, 0.5);
+    }
+
+    .skill-description {
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-size: 0.95rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .skills-main {
+      display: grid;
+      gap: 1.75rem;
+    }
+
+    .skills-side {
+      display: grid;
+      gap: 1.75rem;
+    }
+
+    .group-header {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .group-copy {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+      line-height: 1.85;
+      max-width: 740px;
+    }
+
+    .technical-grid,
+    .expertise-grid,
+    .software-grid,
+    .timeline-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .technical-grid {
+      grid-template-columns: repeat(2, minmax(260px, 1fr));
+    }
+
+    .tech-card,
+    .expertise-card,
+    .software-item,
+    .timeline-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 28px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(20px);
+      overflow: hidden;
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+    }
+
+    .tech-card:hover,
+    .expertise-card:hover,
+    .software-item:hover,
+    .timeline-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(89, 251, 234, 0.28);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.24), 0 0 22px rgba(89, 251, 234, 0.12);
+    }
+
+    .tech-card::before,
+    .expertise-card::before {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(89, 251, 234, 0.08);
+      filter: blur(28px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .tech-card::before {
+      top: -22px;
+      right: -20px;
+      width: 140px;
+      height: 140px;
+    }
+
+    .expertise-card::before {
+      top: -18px;
+      left: -14px;
+      width: 120px;
+      height: 120px;
+      background: rgba(126, 58, 242, 0.08);
+    }
+
+    .tech-top {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-icon,
+    .expertise-icon,
+    .software-badge {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(89, 251, 234, 0.24), rgba(59, 130, 246, 0.18));
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 0 16px rgba(89, 251, 234, 0.12);
+      z-index: 1;
+    }
+
+    .tech-top h4,
+    .expertise-card h4,
+    .timeline-card h4 {
+      margin: 0;
+      color: var(--text-primary);
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .tech-top span {
+      display: inline-flex;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(89, 251, 234, 0.12);
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      z-index: 1;
+    }
+
+    .tech-ring {
+      display: grid;
+      place-items: center;
+      gap: 0.85rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tech-ring svg {
+      width: 118px;
+      height: 118px;
+      transform: rotate(-90deg);
+    }
+
+    .ring-bg {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.08);
+      stroke-width: 10;
+    }
+
+    .ring-fill {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 10;
+      stroke-linecap: round;
+      stroke-dasharray: 314;
+      stroke-dashoffset: 314;
+      transition: stroke-dashoffset 1.4s ease;
+    }
+
+    .tech-card.visible .ring-fill {
+      stroke-dashoffset: calc(314 - (314 * var(--percent) / 100));
+    }
+
+    .tech-ring p {
+      margin: 0;
+      font-size: 0.93rem;
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 220px;
+    }
+
+    .expertise-grid {
+      grid-template-columns: repeat(2, minmax(260px, 1fr));
+    }
+
+    .expertise-card {
+      padding: 1.8rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .expertise-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(126, 58, 242, 0.24), rgba(59, 130, 246, 0.18));
+      font-size: 0.95rem;
+    }
+
+    .expertise-card p {
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      font-size: 0.95rem;
+    }
+
+    .software-stack {
+      padding: 1.8rem;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(89, 251, 234, 0.16);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.18);
+    }
+
+    .software-grid {
+      grid-template-columns: repeat(3, minmax(100px, 1fr));
+    }
+
+    .software-item {
+      min-height: 96px;
+      padding: 1rem;
+      display: grid;
+      place-items: center;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #ffffff;
+      cursor: default;
+    }
+
+    .software-item::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: 50%;
+      bottom: -42px;
+      transform: translateX(-50%) translateY(4px);
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(15, 17, 21, 0.95);
+      color: #ffffff;
+      font-size: 0.78rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 2;
+    }
+
+    .software-item:hover::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .timeline-header {
+      display: grid;
+      gap: 0.65rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .timeline-header h3 {
+      margin: 0;
+      font-size: 1.55rem;
+      color: var(--text-primary);
+      line-height: 1.12;
+    }
+
+    .timeline-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .timeline-card {
+      padding: 1.75rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline-card::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 1.55rem;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid rgba(15, 17, 21, 1);
+      box-shadow: 0 0 18px rgba(89, 251, 234, 0.22);
+    }
+
+    .timeline-year {
+      display: inline-flex;
+      padding: 0.5rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(89, 251, 234, 0.12);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      max-width: fit-content;
+    }
+
+    .timeline-card p {
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .timeline-tag {
+      display: inline-flex;
+      padding: 0.5rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(89, 251, 234, 0.12);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 1080px) {
+      .skills-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .technical-grid,
+      .expertise-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .software-grid {
+        grid-template-columns: repeat(3, minmax(120px, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .skills-panel {
+        padding: 0;
+      }
+
+      .technical-grid,
+      .expertise-grid,
+      .software-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .software-item {
+        min-height: 80px;
+      }
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      position: relative;
+      border-radius: 32px;
+      overflow: hidden;
+      min-height: 420px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(100, 255, 218, 0.22);
+      box-shadow: 0 35px 95px rgba(0, 0, 0, 0.28);
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 45%, rgba(15, 17, 21, 0.88) 100%);
+      pointer-events: none;
+    }
+
+    .project-image {
+      height: 260px;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .project-card:hover .project-image img {
+      transform: scale(1.08);
+    }
+
+    .project-content {
+      position: relative;
+      z-index: 1;
+      padding: 1.75rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .project-tag {
+      width: fit-content;
+      padding: 0.65rem 0.95rem;
+      border-radius: 999px;
+      background: rgba(100, 255, 218, 0.12);
+      color: var(--accent);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .project-content h3 {
+      margin: 0;
+      font-size: 1.4rem;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .project-content p {
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      font-size: 0.98rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.85fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .contact-copy {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .contact-copy h2 {
+      margin: 0;
+      font-size: clamp(2.2rem, 3.5vw, 3rem);
+      line-height: 1.05;
+      color: var(--text-primary);
+    }
+
+    .contact-copy p {
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.9;
+      max-width: 720px;
+    }
+
+    .contact-panel {
+      padding: 2rem;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      display: grid;
+      gap: 1rem;
+    }
+
+    .contact-item {
+      display: grid;
+      gap: 0.35rem;
+      padding: 1rem 1.2rem;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .contact-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(100, 255, 218, 0.18);
+      box-shadow: 0 18px 40px rgba(100, 255, 218, 0.12);
+    }
+
+    .contact-item strong {
+      display: block;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+    }
+
+    .contact-item a {
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+      word-break: break-word;
+    }
+
+    footer {
+      padding: 2rem 2rem 3rem;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: var(--accent);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cursor-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .cursor-light {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(100, 255, 218, 0.2), transparent 55%);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.24s ease;
+      mix-blend-mode: screen;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .project-grid,
+      .skills-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-bottom: 5rem;
+      }
+
+      .hero-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 760px) {
+      header {
+        padding: 1rem 1.25rem;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .hero-copy h1 {
+        font-size: 3rem;
+      }
+
+      .skills-panel,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .radial-grid,
+      .experience-grid,
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero {
+        padding-top: 7rem;
+      }
+
+      .hero-copy h1 {
+        font-size: 2.5rem;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      section {
+        padding: 4rem 1.25rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="glow-spot"></div>
+    <div class="glow-spot"></div>
+    <div class="glow-spot"></div>
+
+    <header>
+      <div class="header-inner">
+        <a class="brand" href="#home">Khoa Portfolio</a>
+        <nav>
+          <a href="#home" class="active">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <span class="eyebrow">Graphic Designer</span>
+            <h1>Đoàn Lê Đăng Khoa</h1>
+            <div class="tagline">Crafting Visual Experiences with Purpose</div>
+            <p>Luxury branding, poster systems, and UI visuals designed with cinematic contrast, elegant spacing, and premium polish.</p>
+            <div class="hero-actions">
+              <a href="#projects" class="button primary">See Projects</a>
+              <a href="#contact" class="button secondary">Start a Project</a>
+            </div>
+          </div>
+
+          <article class="hero-card reveal">
+            <div class="hero-image">
+              <img src="ảnh cá nhân/z7793033061256_26e454e5522ad65bc386991b23d87d52.jpg" alt="Portrait of Đoàn Lê Đăng Khoa" />
+            </div>
+            <div class="hero-card-inner">
+              <div class="hero-card-info">
+                <h2>Premium Visual Storytelling</h2>
+                <p>Elegant brand direction, bold poster concepts, and refined UI visuals for creative studios and ambitious campaigns.</p>
+              </div>
+              <div class="hero-card-badges">
+                <span class="badge">Brand Identity</span>
+                <span class="badge">Poster Design</span>
+                <span class="badge">UI Visual</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="section-heading reveal">
+          <span>About</span>
+          <h2>Dark luxury design with high-end craftsmanship.</h2>
+          <p>I build elegant visual systems, premium brand assets, and expressive poster work that feels modern, cinematic, and unmistakably refined.</p>
+        </div>
+        <div class="about-grid">
+          <figure class="about-image reveal">
+            <img src="ảnh cá nhân/z7793033061256_26e454e5522ad65bc386991b23d87d52.jpg" alt="Cinematic portrait image" />
+          </figure>
+          <div class="about-details reveal">
+            <h3>Design that feels premium, purposeful, and memorable.</h3>
+            <p>As a passionate designer, I blend strong concept, mood-driven detail, and polished execution to create work that commands attention and elevates brands.</p>
+            <div class="pill-list">
+              <span class="pill">Branding</span>
+              <span class="pill">Poster Systems</span>
+              <span class="pill">UI Visual</span>
+              <span class="pill">Adobe Illustrator</span>
+              <span class="pill">Adobe Photoshop</span>
+              <span class="pill">Figma</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-skill" id="skills">
+        <div class="section-heading reveal">
+          <span>SKILLS</span>
+          <h2 class="skills-title">Elevated creative<br>skill and experience<br>in a cinematic<br>visual system.</h2>
+          <p>A modern agency-level skills showcase built with glassmorphism, glowing metrics, and an elegant experience timeline.</p>
+        </div>
+
+        <div class="skills-panel">
+          <div class="skills-main">
+            <div class="skill-group reveal">
+              <div class="group-header">
+                <span class="section-label">Technical Skills</span>
+                <p class="group-copy">Core creative tools presented with circular progress, animated bars, and bright iconography.</p>
+              </div>
+              <div class="technical-grid">
+                <article class="tech-card reveal" style="--percent:95;">
+                  <div class="tech-top">
+                    <div class="tech-icon">Ps</div>
+                    <div>
+                      <h4>Photoshop</h4>
+                      <span>95%</span>
+                    </div>
+                  </div>
+                  <div class="tech-ring">
+                    <svg viewBox="0 0 120 120">
+                      <circle class="ring-bg" cx="60" cy="60" r="50" />
+                      <circle class="ring-fill" cx="60" cy="60" r="50" />
+                    </svg>
+                    <p>Advanced compositing and retouching.</p>
+                    <div class="tech-progress-bar">
+                      <span class="tech-progress-fill"></span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="tech-card reveal" style="--percent:92;">
+                  <div class="tech-top">
+                    <div class="tech-icon">Ai</div>
+                    <div>
+                      <h4>Illustrator</h4>
+                      <span>92%</span>
+                    </div>
+                  </div>
+                  <div class="tech-ring">
+                    <svg viewBox="0 0 120 120">
+                      <circle class="ring-bg" cx="60" cy="60" r="50" />
+                      <circle class="ring-fill" cx="60" cy="60" r="50" />
+                    </svg>
+                    <p>Vector systems and premium identity.</p>
+                    <div class="tech-progress-bar">
+                      <span class="tech-progress-fill"></span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="tech-card reveal" style="--percent:90;">
+                  <div class="tech-top">
+                    <div class="tech-icon">F</div>
+                    <div>
+                      <h4>Figma</h4>
+                      <span>90%</span>
+                    </div>
+                  </div>
+                  <div class="tech-ring">
+                    <svg viewBox="0 0 120 120">
+                      <circle class="ring-bg" cx="60" cy="60" r="50" />
+                      <circle class="ring-fill" cx="60" cy="60" r="50" />
+                    </svg>
+                    <p>Interface flow and visual systems.</p>
+                    <div class="tech-progress-bar">
+                      <span class="tech-progress-fill"></span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="tech-card reveal" style="--percent:78;">
+                  <div class="tech-top">
+                    <div class="tech-icon">Ae</div>
+                    <div>
+                      <h4>After Effects</h4>
+                      <span>78%</span>
+                    </div>
+                  </div>
+                  <div class="tech-ring">
+                    <svg viewBox="0 0 120 120">
+                      <circle class="ring-bg" cx="60" cy="60" r="50" />
+                      <circle class="ring-fill" cx="60" cy="60" r="50" />
+                    </svg>
+                    <p>Motion concept and animated storyboarding.</p>
+                    <div class="tech-progress-bar">
+                      <span class="tech-progress-fill"></span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="tech-card reveal" style="--percent:88;">
+                  <div class="tech-top">
+                    <div class="tech-icon">UI</div>
+                    <div>
+                      <h4>UI/UX Design</h4>
+                      <span>88%</span>
+                    </div>
+                  </div>
+                  <div class="tech-ring">
+                    <svg viewBox="0 0 120 120">
+                      <circle class="ring-bg" cx="60" cy="60" r="50" />
+                      <circle class="ring-fill" cx="60" cy="60" r="50" />
+                    </svg>
+                    <p>User journeys, layout systems, and motion-ready UI.</p>
+                    <div class="tech-progress-bar">
+                      <span class="tech-progress-fill"></span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="tech-card reveal" style="--percent:94;">
+                  <div class="tech-top">
+                    <div class="tech-icon">Br</div>
+                    <div>
+                      <h4>Branding</h4>
+                      <span>94%</span>
+                    </div>
+                  </div>
+                  <div class="tech-ring">
+                    <svg viewBox="0 0 120 120">
+                      <circle class="ring-bg" cx="60" cy="60" r="50" />
+                      <circle class="ring-fill" cx="60" cy="60" r="50" />
+                    </svg>
+                    <p>Strategic identity systems for premium impact.</p>
+                    <div class="tech-progress-bar">
+                      <span class="tech-progress-fill"></span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="skill-group reveal">
+              <div class="group-header">
+                <span class="section-label">Creative Expertise</span>
+                <p class="group-copy">Infographic cards for creative strengths and campaign-ready expertise.</p>
+              </div>
+              <div class="expertise-grid">
+                <article class="expertise-card reveal">
+                  <div class="expertise-icon">ID</div>
+                  <h4>Brand Identity</h4>
+                  <p>Visual systems and brand narratives designed for premium experiences.</p>
+                </article>
+                <article class="expertise-card reveal">
+                  <div class="expertise-icon">PD</div>
+                  <h4>Poster Design</h4>
+                  <p>Bold editorial structure, layered composition, and dramatic visual hierarchy.</p>
+                </article>
+                <article class="expertise-card reveal">
+                  <div class="expertise-icon">SM</div>
+                  <h4>Social Media Visual</h4>
+                  <p>Campaign visuals with clarity, rhythm, and engagement on modern feeds.</p>
+                </article>
+                <article class="expertise-card reveal">
+                  <div class="expertise-icon">UI</div>
+                  <h4>UI Visual Design</h4>
+                  <p>Interface layouts with strong typography, spacing, and immersive details.</p>
+                </article>
+                <article class="expertise-card reveal">
+                  <div class="expertise-icon">MG</div>
+                  <h4>Motion Graphic</h4>
+                  <p>Animated branding elements and dynamic storytelling through motion.</p>
+                </article>
+                <article class="expertise-card reveal">
+                  <div class="expertise-icon">TY</div>
+                  <h4>Typography</h4>
+                  <p>Type systems that balance tone, hierarchy, and refined readability.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills-side">
+            <div class="software-stack reveal">
+              <div class="group-header">
+                <span class="section-label">Software Stack</span>
+                <p class="group-copy">Key creative tools with interactive badges and readable visual organization.</p>
+              </div>
+              <div class="software-grid">
+                <div class="software-item" data-tooltip="Adobe Photoshop"><span class="software-badge">Ps</span></div>
+                <div class="software-item" data-tooltip="Adobe Illustrator"><span class="software-badge">Ai</span></div>
+                <div class="software-item" data-tooltip="Figma"><span class="software-badge">F</span></div>
+                <div class="software-item" data-tooltip="Blender"><span class="software-badge">B</span></div>
+                <div class="software-item" data-tooltip="After Effects"><span class="software-badge">Ae</span></div>
+                <div class="software-item" data-tooltip="Lightroom"><span class="software-badge">Lr</span></div>
+              </div>
+            </div>
+
+            <aside class="timeline-panel reveal">
+              <div class="timeline-header">
+                <span class="section-label">Experience</span>
+                <h3>Modern vertical timeline with achievement highlights.</h3>
+              </div>
+              <div class="timeline-list">
+                <article class="timeline-card reveal">
+                  <span class="timeline-year">2024</span>
+                  <h4>Freelance Graphic Designer</h4>
+                  <p>Thiết kế branding cho hơn 20 thương hiệu, tăng nhận diện visual social media, thiết kế poster chiến dịch.</p>
+                  <div class="tag-list">
+                    <span class="timeline-tag">Branding</span>
+                    <span class="timeline-tag">Social</span>
+                    <span class="timeline-tag">Campaign</span>
+                  </div>
+                </article>
+                <article class="timeline-card reveal">
+                  <span class="timeline-year">2023</span>
+                  <h4>UI Visual Designer</h4>
+                  <p>Thiết kế landing page, UI visual cho mobile app, xây dựng design system cơ bản.</p>
+                  <div class="tag-list">
+                    <span class="timeline-tag">UI</span>
+                    <span class="timeline-tag">Mobile</span>
+                    <span class="timeline-tag">System</span>
+                  </div>
+                </article>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="section-heading reveal">
+          <span>Projects</span>
+          <h2>Selected work with refined presence.</h2>
+          <p>Large editorial layouts, premium packaging, and interface studies designed for cinematic impact.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card reveal">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=1200&q=80" alt="Coffee brand packaging design" />
+            </div>
+            <div class="project-content">
+              <span class="project-tag">Branding</span>
+              <h3>Moonbrew Coffee</h3>
+              <p>Luxury identity system for a specialty coffee label with strong contrast, tactile texture, and premium detail.</p>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Creative poster design with modern typography" />
+            </div>
+            <div class="project-content">
+              <span class="project-tag">Poster Design</span>
+              <h3>Eco Future</h3>
+              <p>Campaign poster with layered typography, bold color, and a composed visual rhythm for high-end storytelling.</p>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80" alt="Mobile app interface showcasing fitness design" />
+            </div>
+            <div class="project-content">
+              <span class="project-tag">UI Design</span>
+              <h3>FitZone App</h3>
+              <p>Refined interface visuals for a fitness platform built to feel dynamic, modern, and premium.</p>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=1200&q=80" alt="Luxury skincare packaging design" />
+            </div>
+            <div class="project-content">
+              <span class="project-tag">Packaging</span>
+              <h3>Lumière Skincare</h3>
+              <p>Elegant packaging concept for skincare with delicate finishes, artful composition, and understated luxury.</p>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1200&q=80" alt="Brand identity design for a technology startup" />
+            </div>
+            <div class="project-content">
+              <span class="project-tag">Logo Design</span>
+              <h3>NexaTech</h3>
+              <p>Minimal brand system for an innovation studio, combining precision, geometry, and premium composure.</p>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=1200&q=80" alt="Event poster design for a music festival" />
+            </div>
+            <div class="project-content">
+              <span class="project-tag">Event Poster</span>
+              <h3>SoundScape Festival</h3>
+              <p>Atmospheric event graphics that balance motion, texture, and a premium editorial tone.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="section-heading reveal">
+          <span>Contact</span>
+          <h2>Let's build your next premium visual story.</h2>
+          <p>Reach out for branding, posters, UI visuals, or bespoke creative direction. I’m available for freelance collaborations and agency partnerships.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-copy reveal">
+            <h2>Connect with premium design.</h2>
+            <p>Delivering polished design systems with a cinematic sense of space, color, and motion. Every project is crafted to feel modern, memorable, and luxurious.</p>
+          </div>
+          <div class="contact-panel reveal">
+            <div class="contact-item">
+              <strong>Email</strong>
+              <a href="mailto:doanledangkhoa01112006@gmail.com">doanledangkhoa01112006@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <strong>Zalo</strong>
+              <a href="https://zalo.me/0901552704" target="_blank" rel="noreferrer">0901552704</a>
+            </div>
+            <div class="contact-item">
+              <strong>Telephone</strong>
+              <a href="tel:0901552704">0901552704</a>
+            </div>
+            <div class="contact-item">
+              <strong>Facebook</strong>
+              <a href="https://facebook.com/doanledangkhoa" target="_blank" rel="noreferrer">facebook.com/doanledangkhoa</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Đoàn Lê Đăng Khoa — Premium branding, poster, and UI visual design.</p>
+    </footer>
+  </div>
+
+  <div class="cursor-glow">
+    <div class="cursor-light" id="cursorLight"></div>
+  </div>
+
+  <script>
+    const links = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('section[id]');
+    const observerElements = document.querySelectorAll('.reveal');
+    const cursorLight = document.getElementById('cursorLight');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      document.querySelector('header').style.background = scrollY > 20
+        ? 'rgba(15, 17, 21, 0.88)'
+        : 'rgba(15, 17, 21, 0.75)';
+    });
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          if (entry.target.classList.contains('skill-card')) {
+            const bar = entry.target.querySelector('.skill-progress span');
+            if (bar) bar.style.width = entry.target.style.getPropertyValue('--progress');
+          }
+        }
+      });
+    }, { threshold: 0.18 });
+
+    observerElements.forEach(el => sectionObserver.observe(el));
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
+        }
+      });
+    }, { threshold: 0.55 });
+
+    sections.forEach(section => navObserver.observe(section));
+
+    document.addEventListener('mousemove', (event) => {
+      cursorLight.style.opacity = '1';
+      cursorLight.style.transform = `translate(${event.clientX - 60}px, ${event.clientY - 60}px)`;
+    });
+
+    document.addEventListener('mouseleave', () => {
+      cursorLight.style.opacity = '0';
+    });
+
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelectorAll('nav a').forEach(item => item.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    // Skills animation observer
+    const skillsObserverOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const skillsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, skillsObserverOptions);
+
+    document.querySelectorAll('.premium-skill-card').forEach(card => {
+      skillsObserver.observe(card);
+    });
+  </script>
+</body>
+</html>
